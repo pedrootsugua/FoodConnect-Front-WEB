@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         
         if (validarTelefone()) {
-            alert("Cadastro realizado com sucesso!");
+            
             // Aqui você pode continuar com a submissão do formulário
         } else {
             alert("Por favor, insira um número de telefone válido.");

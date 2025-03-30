@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const nomeCompleto = document.getElementById("nomeCompleto").value.trim();
         const contato = document.getElementById("telefone").value.replace(/\D/g, ""); // Remove caracteres não numéricos
         const email = document.getElementById("email").value.trim();
-        const senha = document.getElementById("senha").value;
-        const confirmSenha = document.getElementById("confirmSenha").value;
         const grupo = document.getElementById("grupo").value;
 
         if (senha !== confirmSenha) {
@@ -24,8 +22,8 @@ document.addEventListener("DOMContentLoaded", function () {
             role: grupo
         };
 
-        fetch("http://localhost:8083/employee/register", {
-            method: "POST",
+        fetch("http://localhost:8083/employee/alter/1", {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
@@ -33,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error("Erro ao cadastrar. Verifique os dados e tente novamente.");
+                throw new Error("Erro ao Alterar as informações. Verifique os dados e tente novamente.");
             }
             return response.json();
         })
