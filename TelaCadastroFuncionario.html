@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="/CSS/BootStrap/bootstrap.css">
         <link rel="stylesheet" href="/CSS/BootStrap/open-iconic-bootstrap.css">
         <link rel="stylesheet" href="/CSS/FormularioFuncionario/formulario.css">
-        <script src="https://unpkg.com/vanilla-masker/build/vanilla-masker.min.js"></script>
+        <script src="https://unpkg.com/vanilla-masker/build/vanilla-masker.min.js" ></script>
         <title>Cadastre-se</title>
     </head>
     
@@ -41,11 +41,11 @@
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label for="Contato">Contato</label>
-                                    <input type="text" class="form-control" id="cpf" placeholder="Informe um numero para contato..."
+                                    <input type="text" class="form-control" id="telefone" placeholder="Informe um numero para contato..."
                                         pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required>
     
                                     <div class="invalid-feedback">
-                                        Digite um CPF válido.
+                                        Digite um número de telefone válido no formato (XX) XXXXX-XXXX.
                                     </div>
                                 </div>
                             </div>
@@ -119,6 +119,7 @@
         </div>
         </div>
     </body>
+    <script src="JS/ValidaTelefone.Js" defer></script>
     <script src="JS/CadastroCliente.Js"></script>
     </html>
 </body>
