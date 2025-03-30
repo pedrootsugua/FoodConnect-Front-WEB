@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault(); // Evita recarregar a página
 
         const nomeCompleto = document.getElementById("nomeCompleto").value.trim();
-        const contato = document.getElementById("cpf").value.replace(/\D/g, ""); // Remove caracteres não numéricos
+        const contato = document.getElementById("telefone").value.replace(/\D/g, ""); // Remove caracteres não numéricos
         const email = document.getElementById("email").value.trim();
         const senha = document.getElementById("senha").value;
         const confirmSenha = document.getElementById("confirmSenha").value;
