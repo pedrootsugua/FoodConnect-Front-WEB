@@ -1,14 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const userId = 3; // ID fixo para o exemplo, pode ser dinâmico
+    const userId = 4; // ID fixo para o exemplo, pode ser dinâmico
 
     // Seleciona os campos do formulário
     const nomeCompleto = document.getElementById("nomeCompleto");
-    const telefone = document.getElementById("telefone");
+    const telefone = document.getElementById("telefone"); // Confirme se o ID no HTML está correto
     const email = document.getElementById("email");
     const grupo = document.getElementById("grupo");
     const senha = document.getElementById("senha");
     const confirmSenha = document.getElementById("confirmSenha");
     const form = document.querySelector(".form");
+
+    function atualizarCampos() {
+        if (grupo.value === "Atendente") {
+            grupo.disabled = true; // Libera alteração do grupo
+            email.disabled = true;  // Impede alteração do email
+            senha.disabled = false; // Libera alteração da senha
+            confirmSenha.disabled = false;
+        } else if (grupo.value === "Gerente") {
+            email.disabled = true;
+            senha.disabled = true;  // Impede alteração da senha
+            confirmSenha.disabled = true;
+        }
+    }
+
+    // Evento para detectar mudança de grupo e atualizar os campos
+    grupo.addEventListener("change", atualizarCampos);
 
     // Buscar e preencher os dados do usuário
     fetch(`http://localhost:8083/employee/user/${userId}`)
@@ -21,11 +37,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             nomeCompleto.value = data.name;
             email.value = data.email;
-            telefone.value = data.phoneNumber;
+            telefone.value = data.phoneNumber ? data.phoneNumber : ""; // Evita erro se for null
             grupo.value = data.role;
+
+            // Atualiza os campos conforme a role do usuário carregado
+            atualizarCampos();
         })
         .catch(error => {
-            alert(error.message);
+            console.error("Erro ao buscar usuário:", error);
+            alert("Erro ao carregar os dados do usuário.");
         });
 
     // Evento para salvar as alterações
@@ -69,7 +89,8 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.reload(); // Atualiza a página após salvar
         })
         .catch(error => {
-            alert(error.message);
+            console.error("Erro ao atualizar:", error);
+            alert("Erro ao atualizar os dados.");
         });
     });
 });
