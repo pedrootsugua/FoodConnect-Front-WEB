@@ -8,8 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const contato = document.getElementById("telefone").value.replace(/\D/g, ""); // Remove caracteres não numéricos
         const email = document.getElementById("email").value.trim();
         const grupo = document.getElementById("grupo").value;
+        const senha = document.getElementById("senha").value;
+        const confirmSenha = document.getElementById("confirmSenha").value;
 
-        if (senha !== confirmSenha) {
+        if (senha != confirmSenha) {
+            alert("Teste");
             alert("As senhas não coincidem!");
             return;
         }
